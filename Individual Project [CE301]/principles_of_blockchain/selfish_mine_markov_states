@@ -1,0 +1,49 @@
+Strategy 1
+
+State is 0 (selfish miner lead is 0) at initiation, so are at equality between both branches
+In the instance of equality, gamma will mine on the selfish miners chain, 1-gamme wont..
+
+When State is >2 selfish miners have a lead of n+2 ahead of honest miners and keep mining anonomously, releasing one block at
+a time whenever honest miners find a block..
+
+State < 0. selfish adopt the public chain, as honest miners are 1 block ahead, selfish miners dont want to waste computational power.
+
+State = 1. honest miners can either catch up to be 1 block behind selfish miner, or selfish miners get to state State >2. in the instance
+of the former case, selfish miners will publish their chain to ensure computational resources arent wasted, in the case State reaches 0.
+
+These definitions will be used for development of selfish_mine.py and selfish_mining_simulator.py
+
+
+Strategy 2 (SELFISH MINER ATTEMPTS TO CATCH UP ON A 2 BLOCK DEFICIT AGAINST THE HONEST CHAIN)
+
+
+State is 0 (selfish miner lead is 0) at initiation, so are at equality between both branches
+In the instance of equality, gamma will mine on the selfish miners chain, 1-gamma wont..
+
+When State is >2 selfish miners have a lead of n+2 ahead of honest miners and keep mining anonomously, releasing one block at
+a time whenever honest miners find a block..
+
+
+State < 0. *STRATEGY* selfish DONT adopt the public chain, honest miners are 1 block ahead, selfish miners try to catch up to the selfish miners chain, even if they are two blocks behind
+
+The results will be compared against those of Strategy 1
+
+State = 1. honest miners can either catch up to be 1 block behind selfish miner, or selfish miners get to state State >2. in the instance
+of the former case, selfish miners will publish their chain to ensure computational resources arent wasted, in the case State reaches 0.
+
+
+Strategy 3 (SELFISH MINERS DONT PUBLISH A BLOCK WHEN State > 2 AND AN HONEST MINER FINDS A BLOCK)
+(INSTEAD SELFISH MINERS PUBLISH THEIR CHAIN ONLY WHEN THEY ARE 3 BLOCKS AHEAD OF THE HONEST CHAIN)?
+
+State is 0 (selfish miner lead is 0) at initiation, so are at equality between both branches
+In the instance of equality, gamma will mine on the selfish miners chain, 1-gamma wont..
+
+When State is >2 selfish miners have a lead of n+2 ahead of honest miners and keep mining anonomously, *STRATEGY*
+
+When State is NEW STATE selfish miners are forced to publish their rewards once they are 3 blocks ahead of the Honest Miners chain.
+
+State < 0. selfish adopt the public chain, as honest miners are 1 block ahead, selfish miners dont want to waste computational power.
+
+State = 1. honest miners can either catch up to be 1 block behind selfish miner, or selfish miners get to state State >2. in the instance
+of the former case, selfish miners will publish their chain to ensure computational resources arent wasted, in the case State reaches 0.
+

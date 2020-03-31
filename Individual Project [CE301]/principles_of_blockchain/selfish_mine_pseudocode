@@ -1,0 +1,77 @@
+CLASS pool:
+    FUNCTION __init__(self, selfishmine, honestmine, selfishorphan, honestorphan, selfishblock, honestblock):
+         selfishmine <- selfishmine
+         honestmine <- honestmine
+         selfishorphan <- selfishorphan
+         honestorphan <- honestorphan
+         selfishblock <- selfishblock
+         honestblock <- honestblock
+    ENDFUNCTION
+ENDCLASS
+
+FUNCTION Mine(alpha, gamma, q):
+      ENDFUNCTION
+
+    state <- 0
+    privatechain <- 0
+    publicchain <- 0
+      ENDFUNCTION
+
+    for i in range(q):
+        r <- random.random()
+        IF state = 0:
+            IF r <= alpha:
+                state <- 1
+            ELSE:
+                publicchain += 1
+                state <- 0
+            ENDIF
+        ELSEIF state = 1:
+            IF r <= alpha:
+                state <- 2
+                n <- 2
+            ELSE:
+                state <- -1
+            ENDIF
+        ELSEIF state = -1:
+            ENDFOR
+            IF r <= alpha:
+                ENDFOR
+                privatechain += 1
+                publicchain += 2
+                state <- 0
+                ENDFOR
+                  ENDIF
+            ELSEIF privatechain > 0 AND r<= float(gamma):
+                    privatechain += 1
+                    state <- 0
+            ELSEIF privatechain > 0 AND r >= float(gamma):
+                    publicchain += 2
+                    state <- 0
+                     ENDIF
+            ELSE:
+                privatechain += 0
+                publicchain += 2
+                state <- 0
+            ENDIF
+        ELSEIF state = 2:
+            IF r <= alpha:
+                n += 1
+                state <- 3
+            ELSE:
+                ENDFOR
+                publicchain += n
+                privatechain += n
+                state <- 0
+            ENDIF
+        ELSEIF state >= 2:
+            IF r <= alpha:
+                n += 1
+                state += 1
+            ELSE:
+                state -= 1
+        ENDIF
+            ENDIF
+    ENDFOR
+    RETURN float(privatechain) / publicchain
+ENDFUNCTION

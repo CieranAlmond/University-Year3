@@ -1,0 +1,40 @@
+
+   """
+    def selfish_miner(self):
+
+        self.private_chain += 1
+
+        if self.private_chain > 0 and self.private_chain == self.public_chain and self.private_chain == 2:
+            self.selfish_block += 2
+            self.private_chain = 0
+            self.public_chain = 0
+            # set public and private 0,0
+
+    def honest_miner(self):
+
+        self.public_chain += 1
+
+        if self.private_chain > 0 and self.private_chain == self.public_chain:  # delta/state ==0
+            # honest miners get a block
+            self.honest_block += 1
+
+            r = random.uniform(0, 1)  # random number for each simulation between 0 and 1
+
+            # case in which next block will be found by either honest or selfish miner.
+            # if appended to private chain - ratio will be 1;1
+            # if appended to public chain - ratio will be 0;2
+            # gamma = radio of honest miner who mine on selfish chains block
+            if self.private_chain > 0 and r <= float(self.gamma):
+                self.selfish_block += 1
+
+            elif self.private_chain > 0 and r >= float(self.gamma):
+                self.honest_block += 1
+
+            self.public_chain = 0
+            self.private_chain = 0
+
+        elif self.state == 2:
+            self.selfish_block += self.private_chain
+            self.public_chain = 0
+            self.private_chain = 0
+    """
